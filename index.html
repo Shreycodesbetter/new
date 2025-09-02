@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math Mastery Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f6ff;
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #1976d2;
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        main {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+        }
+        h2 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .description {
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+        }
+        .game-section {
+            margin-top: 2rem;
+        }
+        .button-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .game-btn {
+            background: #e3f2fd;
+            border: 1px solid #1976d2;
+            color: #1976d2;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            min-width: 180px;
+            text-align: center;
+        }
+        .game-btn:hover {
+            background: #1976d2;
+            color: #fff;
+        }
+        .math-quiz {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem;
+            }
+            .button-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Math Mastery Hub</h1>
+        <p>Sharpen your mind with fun math challenges!</p>
+    </header>
+    <main>
+        <div class="description">
+            Welcome to Math Mastery Hub, your destination for engaging math activities and logical thinking games.
+            Improve your arithmetic, problem-solving skills, and strategic reasoning. Select a module below to get started!
+        </div>
+
+        <section class="game-section">
+            <h2>Quick Math Practice</h2>
+            <div class="math-quiz" id="math-quiz">
+                <p id="question"></p>
+                <input type="number" id="answer" placeholder="Your answer" />
+                <button onclick="checkAnswer()">Submit</button>
+                <div id="feedback" style="margin-top:10px;"></div>
+            </div>
+        </section>
+
+        <section class="game-section">
+            <h2>Brain Game Modules</h2>
+            <div class="button-list">
+                <a class="game-btn" href="https://rovencode.github.io/" target="_blank">Math Logic Arcade</a>
+                <a class="game-btn" href="https://mathgames66.github.io/" target="_blank">MathGames66</a>
+                <a class="game-btn" href="https://ubg100.github.io/" target="_blank">UBG100 Math Puzzles</a>
+                <a class="game-btn" href="https://sites.google.com/view/classroom6x/" target="_blank">Classroom6x Games</a>
+                <a class="game-btn" href="https://geometryspot.com/" target="_blank">Geometry Spot</a>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Simple math quiz
+        let a = Math.floor(Math.random() * 20 + 2);
+        let b = Math.floor(Math.random() * 15 + 3);
+        let op = ['+', '-', '*'][Math.floor(Math.random() * 3)];
+        let correct;
+        switch(op) {
+            case '+': correct = a+b; break;
+            case '-': correct = a-b; break;
+            case '*': correct = a*b; break;
+        }
+        document.getElementById('question').textContent = `Solve: ${a} ${op} ${b} = ?`;
+
+        function checkAnswer() {
+            const input = Number(document.getElementById('answer').value);
+            const feedback = document.getElementById('feedback');
+            if (input === correct) {
+                feedback.textContent = "Correct! 🎉 Try another module below!";
+                feedback.style.color = "#388e3c";
+            } else {
+                feedback.textContent = "Oops! Try again.";
+                feedback.style.color = "#d32f2f";
+            }
+        }
+    </script>
+</body>
+</html>
