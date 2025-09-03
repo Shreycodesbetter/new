@@ -39,7 +39,7 @@
             font-size: 1.15rem;
             margin-bottom: 2rem;
         }
-        .game-section {
+        .module-section {
             margin-top: 2rem;
         }
         .button-list {
@@ -48,7 +48,7 @@
             gap: 1rem;
             margin-top: 1.5rem;
         }
-        .game-btn {
+        .module-btn {
             background: #e3f2fd;
             border: 1px solid #1976d2;
             color: #1976d2;
@@ -61,7 +61,7 @@
             min-width: 180px;
             text-align: center;
         }
-        .game-btn:hover {
+        .module-btn:hover {
             background: #1976d2;
             color: #fff;
         }
@@ -93,24 +93,24 @@
             Improve your arithmetic, problem-solving skills, and strategic reasoning. Select a module below to get started!
         </div>
 
-        <section class="game-section">
+        <section class="math-quiz">
             <h2>Quick Math Practice</h2>
-            <div class="math-quiz" id="math-quiz">
+            <div id="math-quiz">
                 <p id="question"></p>
                 <input type="number" id="answer" placeholder="Your answer" />
-                <button onclick="checkAnswer()">Submit</button>
+                <button id="submitBtn" onclick="checkAnswer()">Submit</button>
                 <div id="feedback" style="margin-top:10px;"></div>
             </div>
         </section>
 
-        <section class="game-section">
-            <h2>Brain Game Modules</h2>
+        <section class="module-section">
+            <h2>Modules</h2>
             <div class="button-list">
-                <a class="game-btn" href="https://rovencode.github.io/" target="_blank">Math Logic Arcade</a>
-                <a class="game-btn" href="https://mathgames66.github.io/" target="_blank">MathGames66</a>
-                <a class="game-btn" href="https://ubg100.github.io/" target="_blank">UBG100 Math Puzzles</a>
-                <a class="game-btn" href="https://sites.google.com/view/classroom6x/" target="_blank">Classroom6x Games</a>
-                <a class="game-btn" href="https://geometryspot.com/" target="_blank">Geometry Spot</a>
+                <a class="module-btn" href="https://rovencode.github.io/" target="_blank">Algebra</a>
+                <a class="module-btn" href="https://mathgames66.github.io/" target="_blank">Geometry</a>
+                <a class="module-btn" href="https://ubg100.github.io/" target="_blank">Statistics</a>
+                <a class="module-btn" href="https://sites.google.com/view/classroom6x/" target="_blank">Trigonometry</a>
+                <a class="module-btn" href="https://geometryspot.com/" target="_blank">Calculus</a>
             </div>
         </section>
     </main>
@@ -131,8 +131,13 @@
             const input = Number(document.getElementById('answer').value);
             const feedback = document.getElementById('feedback');
             if (input === correct) {
-                feedback.textContent = "Correct! 🎉 Try another module below!";
+                // Redirect to chat page
+                feedback.textContent = "Correct! Redirecting you to advanced practice...";
                 feedback.style.color = "#388e3c";
+                document.getElementById('submitBtn').disabled = true;
+                setTimeout(function() {
+                    window.location.href = "https://coderkid4.github.io/nova/chat.html";
+                }, 1200);
             } else {
                 feedback.textContent = "Oops! Try again.";
                 feedback.style.color = "#d32f2f";
